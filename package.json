@@ -1,0 +1,62 @@
+{
+  "name": "kingwings",
+  "version": "0.0.0",
+  "description": "landing page for Kings Fish and Wings",
+  "main": "src/server/index.js",
+  "jest": {
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "<rootDir>__tests__/setup/enzyme.js"
+    ],
+    "watchPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
+  },
+  "scripts": {
+    "start": "nodemon src/server/index.js",
+    "dev": "webpack-dev-server",
+    "build": "webpack",
+    "test": "jest --watchAll --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changyeamoon/kingwings.git"
+  },
+  "keywords": [
+    "kings",
+    "fish",
+    "and",
+    "wings",
+    "mhy",
+    "group",
+    "inc"
+  ],
+  "author": "Chang Moon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/changyeamoon/kingwings/issues"
+  },
+  "homepage": "https://github.com/changyeamoon/kingwings#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "dotenv": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "express": "^4.16.4",
+    "react": "^16.8.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "react-hot-loader": "^4.6.5",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
