@@ -7,14 +7,14 @@ module.exports = {
   mode: 'development',
   entry: './src/client/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve('dist'),
     filename: 'bundle.js',
   },
   devServer: {
     contentBase: './dist',
     hot: true,
     open: true,
-    publicPath: '/virtual',
+    publicPath: '/',
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
