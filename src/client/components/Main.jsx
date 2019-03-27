@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Menu from './Menu';
 
 const Home = styled.div`
   position: absolute;
@@ -11,6 +12,7 @@ const Main = () => {
   return (
     <Home>
       <div>Hello from main</div>
+      <Menu />
     </Home>
   );
 };

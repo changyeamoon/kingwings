@@ -34,7 +34,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
 
-    listings: {
+    combos: {
       type: new GraphQLList(ComboType),
       resolve(parent, args) {
         return db

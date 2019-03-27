@@ -23,7 +23,7 @@ const Container = styled.div`
 const App = () => {
   const [login, setLogin] = useState(false);
 
-  function AdminRoute({ component: Component, ...rest }) {
+  const AdminRoute = ({ component: Component, ...rest }) => {
     return (
       <Route
         {...rest}
@@ -36,7 +36,7 @@ const App = () => {
         }
       />
     );
-  }
+  };
 
   return (
     <Router>
