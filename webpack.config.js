@@ -9,12 +9,14 @@ module.exports = {
   output: {
     path: path.resolve('dist'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   devServer: {
     contentBase: './dist',
     hot: true,
     open: true,
     publicPath: '/',
+    historyApiFallback: true,
     proxy: {
       '/api': {
         target: 'http://localhost:3000',
