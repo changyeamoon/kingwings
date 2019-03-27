@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
 import Main from './components/Main';
-import Signin from './components/Signin';
+import Login from './components/Login';
 import Header from './components/Header';
+import Admin from './components/Admin';
 
 const Container = styled.div`
   position: absolute;
@@ -22,17 +23,35 @@ const Container = styled.div`
 const App = () => {
   const [login, setLogin] = useState(false);
 
+  function AdminRoute({ component: Component, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          login ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+          )
+        }
+      />
+    );
+  }
+
   return (
     <Router>
       <Container>
         <Header />
         <Nav />
         <Switch>
+          <Route exact path="/" component={Main} />
           <Route
             exact
-            path="/"
-            render={() => (login ? <Main /> : <Signin setLogin={setLogin} />)}
+            path="/login"
+            render={props => <Login login={login} setLogin={setLogin} {...props} />}
           />
+          <Route path="/about" />
+          <AdminRoute path="/admin" component={Admin} />
         </Switch>
       </Container>
     </Router>

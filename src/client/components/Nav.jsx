@@ -34,7 +34,7 @@ const Nav = () => (
     <DropContent>
       <StyledLink to="/">home</StyledLink>
       <StyledLink to="/about">about</StyledLink>
-      <StyledLink to="/awaytocallnumber">call us</StyledLink>
+      <StyledLink to="/admin">admin</StyledLink>
     </DropContent>
   </DropDown>
 );
