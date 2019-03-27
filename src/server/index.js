@@ -10,6 +10,14 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'), err => {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
+
 app.use(
   '/graphql',
   graphqlHTTP({
