@@ -1,15 +1,13 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Login = props => {
-  console.log('location', props);
+const Login = ({ login, setLogin, from }) => {
   return login ? (
     <Redirect to={from || { from: { pathname: '/' } }} />
   ) : (
     <button
       type="button"
       onClick={() => {
-        console.log('hello');
         setLogin(true);
       }}
     >

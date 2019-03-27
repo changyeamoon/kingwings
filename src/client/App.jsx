@@ -31,7 +31,7 @@ const App = () => {
           login ? (
             <Component {...props} />
           ) : (
-            <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            <Redirect to={{ pathname: '/login', from: props.location }} />
           )
         }
       />
@@ -48,7 +48,7 @@ const App = () => {
           <Route
             exact
             path="/login"
-            render={props => <Login login={login} setLogin={setLogin} {...props} />}
+            render={props => <Login login={login} setLogin={setLogin} from={props.location.from} />}
           />
           <Route path="/about" />
           <AdminRoute path="/admin" component={Admin} />
