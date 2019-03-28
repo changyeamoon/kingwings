@@ -14,19 +14,32 @@ const Menu = ({ setCart }) => {
     });
   }, []);
 
-  const addToCart = e => {
+  const addToCart = combo => {
     setCart(cart => {
-      cart[e.target.value] = 1;
-      return cart;
+      if (!cart[combo.id]) {
+        cart[combo.id] = { name: combo.name, price: combo.price, quantity: 1 };
+      } else {
+        cart[combo.id].quantity += 1;
+      }
+      console.log(cart);
+      return Object.assign({}, cart);
     });
   };
 
   const listCombos = () => {
     console.log('inside list combos which should act like component did mount');
     return combos.map((combo, index) => {
-      return <Combo key={`${combo.__typename}:${combo.id}`} {...combo} addToCart={addToCart} />;
+      return (
+        <Combo
+          key={`${combo.__typename}:${combo.id}`}
+          id={`${combo.__typename}:${combo.id}`}
+          {...combo}
+          addToCart={addToCart}
+        />
+      );
     });
   };
+
   return <StyledMenu>{listCombos()}</StyledMenu>;
 };
 

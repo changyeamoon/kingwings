@@ -9,7 +9,7 @@ const Home = styled.div`
 `;
 
 const Main = () => {
-  const [cart, setCart] = useState({ 1: { name: '10 piece fish', price: '1.99', quantity: 1 } });
+  const [cart, setCart] = useState({});
 
   return (
     <Home>

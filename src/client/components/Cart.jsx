@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const CartContent = styled.div`
@@ -19,17 +19,36 @@ const CartStore = styled.div`
   }
 `;
 
+const ItemName = styled.span``;
+const ItemPrice = styled.span``;
+const ItemQuantity = styled.span``;
+
 const Cart = ({ cart }) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const sum = Object.values(cart).reduce((accum, curr) => {
+      return accum + curr.quantity;
+    }, 0);
+    setTotalPrice(sum);
+  }, [cart]);
+
+  const ListCart = () => {
+    return Object.values(cart).map(item => (
+      <div key={cart.id}>
+        <ItemName>{item.name}</ItemName>
+        <ItemPrice>{item.price}</ItemPrice>
+        <ItemQuantity>{item.quantity}</ItemQuantity>
+        <button type="button">DELETE</button>
+      </div>
+    ));
+  };
+
   return (
     <CartStore>
       <span>CART</span>
-      <CartContent>
-        {Object.values(cart).map(item => (
-          <div>
-            {item.name} {item.price} {item.quantity}
-          </div>
-        ))}
-      </CartContent>
+      <CartContent>{ListCart()}</CartContent>
+      <div>TOTAL: {totalPrice}</div>
     </CartStore>
   );
 };
