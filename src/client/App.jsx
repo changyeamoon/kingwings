@@ -9,7 +9,7 @@ import Admin from './components/Admin';
 
 const Container = styled.div`
   text-align: center;
-  font-size: 2em;
+  font-size: 12px;
 `;
 
 const App = () => {

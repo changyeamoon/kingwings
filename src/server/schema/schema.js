@@ -4,7 +4,7 @@ const db = require('./../model/db');
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt,
+  GraphQLFloat,
   GraphQLSchema,
   GraphQLID,
   GraphQLList,
@@ -16,7 +16,7 @@ const ComboType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    price: { type: GraphQLString },
+    price: { type: GraphQLFloat },
   }),
 });
 
@@ -53,7 +53,7 @@ const Mutation = new GraphQLObjectType({
       type: ComboType,
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
-        price: { type: new GraphQLNonNull(GraphQLString) },
+        price: { type: new GraphQLNonNull(GraphQLFloat) },
       },
       resolve(parent, args) {
         return db

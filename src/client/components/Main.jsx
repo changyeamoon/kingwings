@@ -11,12 +11,37 @@ const Home = styled.div`
 const Main = () => {
   const [cart, setCart] = useState({});
 
+  const addToCart = combo => {
+    setCart(prevCart => {
+      const newCart = Object.assign({}, prevCart);
+      if (!newCart[combo.id]) {
+        newCart[combo.id] = { id: combo.id, name: combo.name, price: combo.price, quantity: 1 };
+      } else {
+        newCart[combo.id].quantity += 1;
+      }
+      return newCart;
+    });
+  };
+
+  const deleteFromCart = item => {
+    setCart(prevCart => {
+      const newCart = Object.assign({}, prevCart);
+      if (!newCart[item.id]) {
+        console.log('this should never be called');
+      } else {
+        newCart[item.id].quantity -= 1;
+        if (newCart[item.id].quantity <= 0) {
+          delete newCart[item.id];
+        }
+      }
+      return newCart;
+    });
+  };
+
   return (
     <Home>
-      <Cart cart={cart} setCart={setCart} />
-      <div>Hello from main</div>
-
-      <Menu setCart={setCart} />
+      <Cart cart={cart} deleteFromCart={deleteFromCart} />
+      <Menu addToCart={addToCart} />
     </Home>
   );
 };

@@ -5,7 +5,7 @@ import Combo from './Combo';
 
 const StyledMenu = styled.div``;
 
-const Menu = ({ setCart }) => {
+const Menu = ({ addToCart }) => {
   const [combos, setCombos] = useState([]);
 
   useEffect(() => {
@@ -14,20 +14,7 @@ const Menu = ({ setCart }) => {
     });
   }, []);
 
-  const addToCart = combo => {
-    setCart(cart => {
-      if (!cart[combo.id]) {
-        cart[combo.id] = { name: combo.name, price: combo.price, quantity: 1 };
-      } else {
-        cart[combo.id].quantity += 1;
-      }
-      console.log(cart);
-      return Object.assign({}, cart);
-    });
-  };
-
   const listCombos = () => {
-    console.log('inside list combos which should act like component did mount');
     return combos.map((combo, index) => {
       return (
         <Combo

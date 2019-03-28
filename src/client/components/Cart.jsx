@@ -23,23 +23,25 @@ const ItemName = styled.span``;
 const ItemPrice = styled.span``;
 const ItemQuantity = styled.span``;
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, deleteFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const sum = Object.values(cart).reduce((accum, curr) => {
-      return accum + curr.quantity;
+      return accum + curr.price * curr.quantity;
     }, 0);
-    setTotalPrice(sum);
+    setTotalPrice(sum.toFixed(2));
   }, [cart]);
 
   const ListCart = () => {
     return Object.values(cart).map(item => (
-      <div key={cart.id}>
+      <div key={item.id}>
         <ItemName>{item.name}</ItemName>
         <ItemPrice>{item.price}</ItemPrice>
         <ItemQuantity>{item.quantity}</ItemQuantity>
-        <button type="button">DELETE</button>
+        <button type="button" onClick={() => deleteFromCart(item)}>
+          DELETE
+        </button>
       </div>
     ));
   };
