@@ -30,7 +30,7 @@ const RootQuery = new GraphQLObjectType({
         return db
           .query('SELECT * FROM combo WHERE id = $1;', [args.id])
           .then(data => data)
-          .catch(e => console.log(`error: ${e}`));
+          .catch(err => console.log(err.stack));
       },
     },
 
@@ -39,8 +39,8 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return db
           .query('SELECT * FROM combo;')
-          .then(data => data)
-          .catch(e => console.log(`error: ${e}`));
+          .then(res => res.rows)
+          .catch(err => console.log(err.stack));
       },
     },
   },
@@ -62,7 +62,7 @@ const Mutation = new GraphQLObjectType({
             args.price,
           ])
           .then(data => data)
-          .catch(e => console.log(`error: ${e}`));
+          .catch(err => console.log(err.stack));
       },
     },
     deleteCombo: {
@@ -77,10 +77,10 @@ const Mutation = new GraphQLObjectType({
             const rowCount = db
               .query('DELETE FROM listing WHERE id = $1', [args.id])
               .then(deletedData => deletedData.rowCount)
-              .catch(e => console.log(`error: ${e}`));
+              .catch(err => console.log(err.stack));
             return { ...data, rowCount };
           })
-          .catch(e => console.log(`error: ${e}`));
+          .catch(err => console.log(err.stack));
       },
     },
   },
