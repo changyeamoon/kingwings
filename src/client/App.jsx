@@ -42,7 +42,7 @@ const App = () => {
             path="/login"
             render={props => <Login login={login} setLogin={setLogin} location={props.location} />}
           />
-          <Route path="/about" />
+          <Route path="/pdf-menu" />
           <AdminRoute path="/admin" component={Admin} />
         </Switch>
       </Container>

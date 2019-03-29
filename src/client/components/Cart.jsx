@@ -6,7 +6,8 @@ const CartContent = styled.div`
   position: absolute;
   background-color: #f9f9f9;
   max-height: 20vh;
-  bottom: 50px;
+  width: 22vw
+  bottom: 30px;
   right: 0.5em;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
@@ -57,14 +58,14 @@ const Cart = ({ cart, deleteFromCart }) => {
           });
         }}
       >
-        TOTAL: {totalPrice}
+        SUB TOTAL + TAX(7.75%) = TOTAL: {totalPrice}
       </button>
       <CartContent style={cartStyle}>
         <button
           type="button"
           onClick={() =>
             setCartStyle(prevCartStyle =>
-              Object.assign({ ...prevCartStyle }, { maxHeight: '100vh' }),
+              Object.assign({ ...prevCartStyle }, { minHeight: '100vh' }),
             )
           }
         >

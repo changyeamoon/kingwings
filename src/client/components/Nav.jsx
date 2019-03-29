@@ -33,7 +33,7 @@ const Nav = () => (
     <span> - </span>
     <DropContent>
       <StyledLink to="/">home</StyledLink>
-      <StyledLink to="/about">about</StyledLink>
+      <StyledLink to="/pdf-menu">about</StyledLink>
       <StyledLink to="/admin">admin</StyledLink>
     </DropContent>
   </DropDown>

@@ -4,7 +4,7 @@ import gql from '../gqlQueries';
 import Item from './Item';
 
 const StyledMenu = styled.div`
-  height: 100vh;
+  height: 86vh;
   overflow: scroll;
 `;
 
