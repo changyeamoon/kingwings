@@ -53,9 +53,7 @@ const Cart = ({ cart, deleteFromCart }) => {
         type="button"
         onClick={() => {
           setCartStyle(prevCartStyle => {
-            const obj = Object.assign({}, prevCartStyle);
-            obj.display = 'grid';
-            return obj;
+            return Object.assign({ ...prevCartStyle }, { display: 'grid' });
           });
         }}
       >
@@ -65,7 +63,9 @@ const Cart = ({ cart, deleteFromCart }) => {
         <button
           type="button"
           onClick={() =>
-            setCartStyle(prevCartStyle => Object.assign(prevCartStyle, { maxHeight: '100vh' }))
+            setCartStyle(prevCartStyle =>
+              Object.assign({ ...prevCartStyle }, { maxHeight: '100vh' }),
+            )
           }
         >
           BIGG

@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import gql from '../gqlQueries';
 import Item from './Item';
 
-const StyledMenu = styled.div``;
+const StyledMenu = styled.div`
+  height: 100vh;
+  overflow: scroll;
+`;
 
 const Menu = ({ addToCart }) => {
   const [items, setItems] = useState([]);
