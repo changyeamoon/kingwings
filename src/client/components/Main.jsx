@@ -5,7 +5,6 @@ import Cart from './Cart';
 
 const Home = styled.div`
   text-align: center;
-  color: #313b72;
 `;
 
 const Main = () => {
@@ -40,8 +39,8 @@ const Main = () => {
 
   return (
     <Home>
-      <Cart cart={cart} deleteFromCart={deleteFromCart} />
       <Menu addToCart={addToCart} />
+      <Cart cart={cart} deleteFromCart={deleteFromCart} />
     </Home>
   );
 };

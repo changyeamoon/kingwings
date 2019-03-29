@@ -1,7 +1,7 @@
 const gql = {
-  getCombos: () => {
+  getItems: () => {
     const query = `{ 
-      combos {
+      items {
         __typename 
         id
         name

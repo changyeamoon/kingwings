@@ -11,8 +11,8 @@ const {
   GraphQLNonNull,
 } = graphql;
 
-const ComboType = new GraphQLObjectType({
-  name: 'Combo',
+const ItemType = new GraphQLObjectType({
+  name: 'Item',
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
@@ -23,22 +23,22 @@ const ComboType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    combo: {
-      type: ComboType,
+    item: {
+      type: ItemType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return db
-          .query('SELECT * FROM combo WHERE id = $1;', [args.id])
+          .query('SELECT * FROM item WHERE id = $1;', [args.id])
           .then(data => data)
           .catch(err => console.log(err.stack));
       },
     },
 
-    combos: {
-      type: new GraphQLList(ComboType),
+    items: {
+      type: new GraphQLList(ItemType),
       resolve(parent, args) {
         return db
-          .query('SELECT * FROM combo;')
+          .query('SELECT * FROM item;')
           .then(res => res.rows)
           .catch(err => console.log(err.stack));
       },
@@ -49,15 +49,15 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addCombo: {
-      type: ComboType,
+    addItem: {
+      type: ItemType,
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         price: { type: new GraphQLNonNull(GraphQLFloat) },
       },
       resolve(parent, args) {
         return db
-          .query('INSERT INTO combo(name, price) VALUES($1, $2) RETURNING *', [
+          .query('INSERT INTO item(name, price) VALUES($1, $2) RETURNING *', [
             args.name,
             args.price,
           ])
@@ -65,17 +65,17 @@ const Mutation = new GraphQLObjectType({
           .catch(err => console.log(err.stack));
       },
     },
-    deleteCombo: {
-      type: ComboType,
+    deleteItem: {
+      type: ItemType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
         return db
-          .query('SELECT * FROM listing WHERE id = $1;', [args.id])
+          .query('SELECT * FROM item WHERE id = $1;', [args.id])
           .then(data => {
             const rowCount = db
-              .query('DELETE FROM listing WHERE id = $1', [args.id])
+              .query('DELETE FROM item WHERE id = $1', [args.id])
               .then(deletedData => deletedData.rowCount)
               .catch(err => console.log(err.stack));
             return { ...data, rowCount };

@@ -5,18 +5,18 @@ const CartContent = styled.div`
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-height: 50px;
+  max-height: 20vh;
+  bottom: 50px;
+  right: 0.5em;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
+  overflow: scroll;
 `;
 
 const CartStore = styled.div`
-  bottom: 33%;
+  position: absolute;
+  bottom: 1%;
   right: 0.5em;
-
-  &:hover ${CartContent} {
-    display: grid;
-  }
 `;
 
 const ItemName = styled.span``;
@@ -25,6 +25,7 @@ const ItemQuantity = styled.span``;
 
 const Cart = ({ cart, deleteFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartStyle, setCartStyle] = useState({});
 
   useEffect(() => {
     const sum = Object.values(cart).reduce((accum, curr) => {
@@ -48,9 +49,29 @@ const Cart = ({ cart, deleteFromCart }) => {
 
   return (
     <CartStore>
-      <span>CART</span>
-      <CartContent>{ListCart()}</CartContent>
-      <div>TOTAL: {totalPrice}</div>
+      <button
+        type="button"
+        onClick={() => {
+          setCartStyle(prevCartStyle => {
+            const obj = Object.assign({}, prevCartStyle);
+            obj.display = 'grid';
+            return obj;
+          });
+        }}
+      >
+        TOTAL: {totalPrice}
+      </button>
+      <CartContent style={cartStyle}>
+        <button
+          type="button"
+          onClick={() =>
+            setCartStyle(prevCartStyle => Object.assign(prevCartStyle, { maxHeight: '100vh' }))
+          }
+        >
+          BIGG
+        </button>
+        {ListCart()}
+      </CartContent>
     </CartStore>
   );
 };
