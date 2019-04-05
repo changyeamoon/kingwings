@@ -37,7 +37,6 @@ const CloseButton = styled.span`
 `;
 
 const ItemPhotoModal = ({ display, setDisplay }) => {
-  console.log('chanigng every time yeat?');
   return (
     <Modal style={{ display }}>
       <ModalContent>

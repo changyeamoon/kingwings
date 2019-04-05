@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CustomizeModal from './CustomizeModal';
+import ItemPhotoModal from './ItemPhotoModal';
 
 const ItemDetail = styled.div`
   display: grid;
   padding: 5px 0px;
-  grid-template-columns: 66% 10% 12% 12%
+  grid-template-columns: 60% 10% 12% 12%;
   align-self: center;
   grid-gap: 5px;
 
@@ -16,7 +17,6 @@ const ItemDetail = styled.div`
 const ItemName = styled.span`
   justify-self: left;
 `;
-const ItemPhotoModal = styled.span``;
 const ItemPrice = styled.span``;
 
 const StyledButton = styled.span`
@@ -35,13 +35,8 @@ const Item = ({ addToCart, id, name, price, photo }) => {
 
   return (
     <>
-      <ItemDetail
-        onClick={() => {
-          console.log('hitting?');
-          setPhotoDisplay('block');
-        }}
-      >
-        <ItemName>{name} </ItemName>
+      <ItemDetail>
+        <ItemName onClick={() => setPhotoDisplay('block')}>{name} </ItemName>
         <ItemPrice>${price} </ItemPrice>
         <StyledButton type="button" onClick={() => setCustomizeDisplay('block')}>
           edit

@@ -5,8 +5,8 @@ const CartContent = styled.div`
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  height: 90vh;
-  width: 22vw
+  height: 80vh;
+  width: 60vw
   bottom: 30px;
   right: 0.5em;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -19,43 +19,79 @@ const CartStore = styled.div`
   bottom: 1%;
   right: 2em;
 `;
+const ItemDetails = styled.div`
+  display: grid;
+  padding: 3px 0px;
+  grid-template-columns: 60% 10% 12% 12%;
+  align-self: center;
+  justify-self: center;
+  grid-gap: 5px;
 
-const ItemName = styled.span``;
+  &:hover {
+    background: #eee;
+  }
+`;
+const ItemName = styled.span`
+  justify-self: left;
+`;
 const ItemPrice = styled.span``;
 const ItemQuantity = styled.span``;
 
+const DeleteButton = styled.span`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
+const CartButton = styled.button`
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+  width: 80vw;
+  padding: 0;
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
 const Cart = ({ cart, deleteFromCart }) => {
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [subTotal, setSubTotal] = useState(0);
   useEffect(() => {
     const sum = Object.values(cart).reduce((accum, curr) => {
       return accum + curr.price * curr.quantity;
     }, 0);
-    setTotalPrice(sum.toFixed(2));
+    setSubTotal(sum.toFixed(2));
   }, [cart]);
 
   const [cartStyle, setCartStyle] = useState({});
   const [toggle, setToggle] = useState('v');
   const ListCart = () => {
     return Object.values(cart).map(item => (
-      <div key={item.id}>
+      <ItemDetails key={item.id}>
         <ItemName>{item.name}</ItemName>
         <ItemPrice>{item.price}</ItemPrice>
         <ItemQuantity>{item.quantity}</ItemQuantity>
-        <button type="button" onClick={() => deleteFromCart(item)}>
-          DELETE
-        </button>
-      </div>
+        <DeleteButton type="button" onClick={() => deleteFromCart(item)}>
+          ❌
+        </DeleteButton>
+      </ItemDetails>
     ));
   };
-
+  const tax = (subTotal * 0.0775).toFixed(2);
   return (
     <CartStore>
-      <button
+      <CartButton
         type="button"
         onClick={() => {
           if (toggle === 'v') {
             setCartStyle(prevCartStyle => {
-              return Object.assign({ ...prevCartStyle }, { display: 'grid' });
+              return Object.assign({ ...prevCartStyle }, { display: 'block' });
             });
             setToggle('^');
           }
@@ -67,8 +103,9 @@ const Cart = ({ cart, deleteFromCart }) => {
           }
         }}
       >
-        SUB TOTAL + TAX(7.75%) = TOTAL: {totalPrice} -{toggle}-
-      </button>
+        SUB TOTAL({subTotal}) + TAX({tax}) = {(parseFloat(subTotal) + parseFloat(tax)).toFixed(2)} -
+        {toggle}-
+      </CartButton>
       <CartContent style={cartStyle}>
         {/* <button
           type="button"

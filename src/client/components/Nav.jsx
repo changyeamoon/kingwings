@@ -53,7 +53,7 @@ const Nav = () => {
         {icon}
       </DropButton>
       <DropContent style={{ display }}>
-        <StyledLink to="/">H</StyledLink>
+        <StyledLink to="/">🏠</StyledLink>
         <StyledLink to="/pdf-menu">P</StyledLink>
         <StyledLink to="/admin">A</StyledLink>
       </DropContent>
