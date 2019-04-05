@@ -5,7 +5,7 @@ const CartContent = styled.div`
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  max-height: 20vh;
+  height: 90vh;
   width: 22vw
   bottom: 30px;
   right: 0.5em;
@@ -17,7 +17,7 @@ const CartContent = styled.div`
 const CartStore = styled.div`
   position: absolute;
   bottom: 1%;
-  right: 0.5em;
+  right: 2em;
 `;
 
 const ItemName = styled.span``;
@@ -26,8 +26,6 @@ const ItemQuantity = styled.span``;
 
 const Cart = ({ cart, deleteFromCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [cartStyle, setCartStyle] = useState({});
-
   useEffect(() => {
     const sum = Object.values(cart).reduce((accum, curr) => {
       return accum + curr.price * curr.quantity;
@@ -35,6 +33,8 @@ const Cart = ({ cart, deleteFromCart }) => {
     setTotalPrice(sum.toFixed(2));
   }, [cart]);
 
+  const [cartStyle, setCartStyle] = useState({});
+  const [toggle, setToggle] = useState('v');
   const ListCart = () => {
     return Object.values(cart).map(item => (
       <div key={item.id}>
@@ -53,16 +53,26 @@ const Cart = ({ cart, deleteFromCart }) => {
       <button
         type="button"
         onClick={() => {
-          setCartStyle(prevCartStyle => {
-            return Object.assign({ ...prevCartStyle }, { display: 'grid' });
-          });
+          if (toggle === 'v') {
+            setCartStyle(prevCartStyle => {
+              return Object.assign({ ...prevCartStyle }, { display: 'grid' });
+            });
+            setToggle('^');
+          }
+          if (toggle === '^') {
+            setCartStyle(prevCartStyle => {
+              return Object.assign({ ...prevCartStyle }, { display: 'none' });
+            });
+            setToggle('v');
+          }
         }}
       >
-        SUB TOTAL + TAX(7.75%) = TOTAL: {totalPrice}
+        SUB TOTAL + TAX(7.75%) = TOTAL: {totalPrice} -{toggle}-
       </button>
       <CartContent style={cartStyle}>
-        <button
+        {/* <button
           type="button"
+          style={{ float: 'bottom', height: '20px' }}
           onClick={() =>
             setCartStyle(prevCartStyle =>
               Object.assign({ ...prevCartStyle }, { minHeight: '100vh' }),
@@ -70,7 +80,7 @@ const Cart = ({ cart, deleteFromCart }) => {
           }
         >
           BIGG
-        </button>
+        </button> */}
         {ListCart()}
       </CartContent>
     </CartStore>

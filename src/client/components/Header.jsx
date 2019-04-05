@@ -8,8 +8,9 @@ const StickyLogo = styled.div`
   top: 0;
   width: 25vw;
   height: auto;
-  text-align: center;
-  margin: auto;
+  align-self: center;
+  justify-self: center;
+  margin: 0;
 `;
 
 const StyledHeader = styled.div`
@@ -18,21 +19,34 @@ const StyledHeader = styled.div`
   font-family: 'Alegreya Sans SC', sans-serif;
 `;
 
+const StyledDiv = styled.div`
+  width: auto;
+  justify-self: stretch;
+  align-self: center;
+  font-size: 1em;
+`;
+
+const P = styled.p`
+  margin: 0;
+  font-weight: 900;
+`;
+
 const Header = () => {
   return (
     <StyledHeader>
-      <div>
-        <span>33862 Flat Shoals Rd, Union City, GA 300291</span>
-        <button type="button">Get Directions</button>
-      </div>
+      <StyledDiv>
+        <P>33862 Flat Shoals Rd,</P>
+        <P>Union City, GA 300291</P>
+        <button type="button">Directions</button>
+      </StyledDiv>
       <StickyLogo>
         <img src={logo} alt="crown" />
       </StickyLogo>
-      <div>
-        <span>MON - SAT: 11AM - 10PM</span>
-        <span>SUNDAY: 12PM - 7PM</span>
-        <span>770 774 1155</span>
-      </div>
+      <StyledDiv>
+        <P>MON - SAT: 11AM - 10PM</P>
+        <P>SUNDAY : 12PM - 7PM</P>
+        <P>770 - 774 - 1155</P>
+      </StyledDiv>
     </StyledHeader>
   );
 };

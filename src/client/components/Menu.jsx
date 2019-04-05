@@ -4,8 +4,9 @@ import gql from '../gqlQueries';
 import Item from './Item';
 
 const StyledMenu = styled.div`
-  height: 86vh;
-  overflow: scroll;
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 const Menu = ({ addToCart }) => {

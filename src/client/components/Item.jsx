@@ -4,11 +4,21 @@ import CustomizeModal from './CustomizeModal';
 
 const ItemDetail = styled.div`
   display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr);
+  padding: 5px 0px;
+  grid-template-columns: 65% 10% 5% 10% 10%
+  align-self: center;
+
+  &:hover {
+    background: #eee;
+  }
 `;
-const ItemName = styled.span``;
+const ItemName = styled.span`
+  justify-self: left;
+`;
 const ItemPhoto = styled.span``;
 const ItemPrice = styled.span``;
+
+const StyledButton = styled.span``;
 
 const Item = ({ addToCart, id, name, price, photo }) => {
   const [display, setDisplay] = useState('none');
@@ -18,13 +28,13 @@ const Item = ({ addToCart, id, name, price, photo }) => {
       <ItemDetail>
         <ItemName>{name} </ItemName>
         <ItemPrice>${price} </ItemPrice>
-        <ItemPhoto>Photo Button{photo}</ItemPhoto>
-        <button type="button" onClick={() => setDisplay('block')}>
-          Customize Then Add
-        </button>
-        <button type="button" onClick={() => addToCart({ id, name, price })}>
-          Add to Cart
-        </button>
+        <ItemPhoto>{photo}</ItemPhoto>
+        <StyledButton type="button" onClick={() => setDisplay('block')}>
+          edit
+        </StyledButton>
+        <StyledButton type="button" onClick={() => addToCart({ id, name, price })}>
+          cart
+        </StyledButton>
       </ItemDetail>
       <CustomizeModal display={display} setDisplay={setDisplay} />
     </>

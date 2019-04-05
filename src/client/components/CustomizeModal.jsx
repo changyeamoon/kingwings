@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-ro
 const Modal = styled.div.attrs({ className: 'MyModal' })`
   display: none;
   position: fixed;
-  z-index: 2;
+  z-index: 22;
   left: 0;
   top: 0;
   width: 100%;
