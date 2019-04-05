@@ -5,8 +5,9 @@ import CustomizeModal from './CustomizeModal';
 const ItemDetail = styled.div`
   display: grid;
   padding: 5px 0px;
-  grid-template-columns: 65% 10% 5% 10% 10%
+  grid-template-columns: 66% 10% 12% 12%
   align-self: center;
+  grid-gap: 5px;
 
   &:hover {
     background: #eee;
@@ -15,28 +16,42 @@ const ItemDetail = styled.div`
 const ItemName = styled.span`
   justify-self: left;
 `;
-const ItemPhoto = styled.span``;
+const ItemPhotoModal = styled.span``;
 const ItemPrice = styled.span``;
 
-const StyledButton = styled.span``;
+const StyledButton = styled.span`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+
+  &:focus {
+    outline: 0;
+  }
+`;
 
 const Item = ({ addToCart, id, name, price, photo }) => {
-  const [display, setDisplay] = useState('none');
+  const [photoDisplay, setPhotoDisplay] = useState('none');
+  const [customizeDisplay, setCustomizeDisplay] = useState('none');
 
   return (
     <>
-      <ItemDetail>
+      <ItemDetail
+        onClick={() => {
+          console.log('hitting?');
+          setPhotoDisplay('block');
+        }}
+      >
         <ItemName>{name} </ItemName>
         <ItemPrice>${price} </ItemPrice>
-        <ItemPhoto>{photo}</ItemPhoto>
-        <StyledButton type="button" onClick={() => setDisplay('block')}>
+        <StyledButton type="button" onClick={() => setCustomizeDisplay('block')}>
           edit
         </StyledButton>
         <StyledButton type="button" onClick={() => addToCart({ id, name, price })}>
           cart
         </StyledButton>
       </ItemDetail>
-      <CustomizeModal display={display} setDisplay={setDisplay} />
+      <ItemPhotoModal display={photoDisplay} setDisplay={setPhotoDisplay} photo={photo} />
+      <CustomizeModal display={customizeDisplay} setDisplay={setCustomizeDisplay} />
     </>
   );
 };

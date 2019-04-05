@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Link, Switch, Route, Redirect } from 'react-router-dom';
 
-const Modal = styled.div.attrs({ className: 'MyModal' })`
+const Modal = styled.div.attrs({ className: 'MyCustomizeModal' })`
   display: none;
   position: fixed;
   z-index: 22;
@@ -59,7 +59,7 @@ const CustomizeModal = ({ display, setDisplay }) => {
     <Modal style={{ display }}>
       <ModalContent>
         <CloseButton onClick={() => setDisplay('none')}>&times;</CloseButton>
-        <Router>
+        {/* <Router>
           <ComboEditor>
             <div>
               <Switch>
@@ -80,7 +80,8 @@ const CustomizeModal = ({ display, setDisplay }) => {
               </li>
             </ul>
           </ComboEditor>
-        </Router>
+        </Router> */}
+        <p> Coming Soon </p>
       </ModalContent>
     </Modal>
   );
