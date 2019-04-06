@@ -24,7 +24,7 @@ const StickyLogo = styled.div`
   margin: 0;
 
   @media (min-width: 768px) {
-    width: 66%;
+    width: 70%;
   }
 `;
 
@@ -50,6 +50,10 @@ const A = styled.a`
   font-weight: 700;
   text-decoration: none !important;
   color: #fac52b;
+  text-align: center;
+
+  @media (min-width: 768px) {
+  }
 
   &:visited {
     text-decoration: none;
@@ -80,17 +84,24 @@ const FullLogoSVG = styled.img`
     display: block;
     object-fit: contain;
     height: 100%;
+    width: auto;
   }
 `;
 const GoogleMapSVG = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
   object-fit: contain;
-  padding-top: 3px;
   width: 1.5em;
+  padding: 10px 0px;
 `;
 const PhoneCallSVG = styled.img`
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
   object-fit: contain;
-  padding-top: 3px;
   width: 1.5em;
+  padding: 10px 0px;
 `;
 
 const Header = () => {
@@ -106,6 +117,7 @@ const Header = () => {
           data-initialized="true"
         >
           <GoogleMapSVG src={googleMap} alt="google-map-icon" />
+          <span> Directions</span>
         </A>
       </StyledDiv>
       <StickyLogo>
@@ -116,7 +128,8 @@ const Header = () => {
         <P>MON - SAT: 11AM - 10PM</P>
         <P>SUNDAY : 12PM - 7PM</P>
         <A href="tel:7707741155" data-initialized="true">
-          <PhoneCallSVG src={phoneCall} alt="phone-call-logo" /> <span>770.774.1155</span>
+          <PhoneCallSVG src={phoneCall} alt="phone-call-logo" />
+          <span> 770.774.1155</span>
         </A>
       </StyledDiv>
     </StyledHeader>
