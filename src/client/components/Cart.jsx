@@ -12,6 +12,7 @@ const CartContent = styled.div`
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   overflow: scroll;
+  z-index: 3
 `;
 
 const CartStore = styled.div`
@@ -60,6 +61,17 @@ const CartButton = styled.button`
   }
 `;
 
+const Test = styled.div`
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+`;
+
 const Cart = ({ cart, deleteFromCart }) => {
   const [subTotal, setSubTotal] = useState(0);
   useEffect(() => {
@@ -69,7 +81,7 @@ const Cart = ({ cart, deleteFromCart }) => {
     setSubTotal(sum.toFixed(2));
   }, [cart]);
 
-  const [cartStyle, setCartStyle] = useState({});
+  const [display, setDisplay] = useState({});
   const [toggle, setToggle] = useState('v');
   const ListCart = () => {
     return Object.values(cart).map(item => (
@@ -90,15 +102,11 @@ const Cart = ({ cart, deleteFromCart }) => {
         type="button"
         onClick={() => {
           if (toggle === 'v') {
-            setCartStyle(prevCartStyle => {
-              return Object.assign({ ...prevCartStyle }, { display: 'block' });
-            });
+            setDisplay('block');
             setToggle('^');
           }
           if (toggle === '^') {
-            setCartStyle(prevCartStyle => {
-              return Object.assign({ ...prevCartStyle }, { display: 'none' });
-            });
+            setDisplay('none');
             setToggle('v');
           }
         }}
@@ -106,7 +114,14 @@ const Cart = ({ cart, deleteFromCart }) => {
         SUB TOTAL({subTotal}) + TAX({tax}) = {(parseFloat(subTotal) + parseFloat(tax)).toFixed(2)} -
         {toggle}-
       </CartButton>
-      <CartContent style={cartStyle}>
+      <Test
+        style={{ display }}
+        onClick={() => {
+          setDisplay('none');
+          setToggle('v');
+        }}
+      />
+      <CartContent style={{ display }}>
         {/* <button
           type="button"
           style={{ float: 'bottom', height: '20px' }}

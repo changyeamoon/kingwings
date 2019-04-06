@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Modal = styled.div(props => ({
   display: props.display,
   position: 'fixed',
-  'z-index': '22',
+  'z-index': '2',
   left: '0',
   top: '0',
   width: '100%',
@@ -19,7 +19,6 @@ const ModalContent = styled.div`
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-  z-index: 25;
 `;
 
 const CloseButton = styled.span`

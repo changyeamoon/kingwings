@@ -7,6 +7,7 @@ const StyledMenu = styled.div`
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 5px 0;
 `;
 
 const Menu = ({ addToCart, hello }) => {
