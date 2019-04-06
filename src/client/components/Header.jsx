@@ -16,7 +16,7 @@ const StyledHeader = styled.div`
 `;
 
 const StickyLogo = styled.div`
-  width: 40%;
+  width: 70%;
   height: auto;
   align-self: center;
   justify-self: center;
@@ -37,11 +37,14 @@ const StyledDiv = styled.div`
 
 const P = styled.p`
   margin: 0;
-  font-weight: 900;
+  letter-spacing: 0.08em;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
 `;
 
 const CrownSVG = styled.img`
   object-fit: contain;
+  padding: 2px 0px;
   @media (min-width: 768px) {
     display: none;
   }
