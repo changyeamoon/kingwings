@@ -5,7 +5,7 @@ const CartContent = styled.div`
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  height: 80vh;
+  height: 70vh;
   width: 60vw
   bottom: 30px;
   right: 0.5em;

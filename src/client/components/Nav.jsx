@@ -8,8 +8,8 @@ const DropContent = styled.div`
   right: 0;
   height: auto;
   width: 25px;
-  bottom: 5%;
-  grid-gap: 15px 0px;
+  bottom: 12%;
+  grid-gap: 20px 0px;
 `;
 
 const DropButton = styled.button`
@@ -17,7 +17,7 @@ const DropButton = styled.button`
   -moz-appearance: none;
   border: 0 !important;
   position: fixed;
-  bottom: 33%;
+  bottom: 50%;
   right: 0em;
   width: 25px;
 
