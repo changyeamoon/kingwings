@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
 import Cart from './Cart';
 
 const Home = styled.div`
   text-align: center;
+  padding: 0px 30px;
 `;
 
 const Main = () => {

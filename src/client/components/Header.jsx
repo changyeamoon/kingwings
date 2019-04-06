@@ -1,34 +1,59 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../logo.svg';
+import redFullLogo from '../red-full-logo.svg';
+import device from '../device';
 
 const StyledHeader = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   font-family: 'Alegreya Sans SC', sans-serif;
+  background: blue;
+
+  @media ${device.tablet} {
+    background: #d74841;
+  }
 `;
 
 const StickyLogo = styled.div`
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  width: 25vw;
+  width: 40%;
   height: auto;
   align-self: center;
   justify-self: center;
   margin: 0;
+
+  @media (min-width: 768px) {
+    width: 66%;
+  }
 `;
 
 const StyledDiv = styled.div`
   width: auto;
   justify-self: stretch;
   align-self: center;
-  font-size: 1em;
+  font-size: 2vw;
+  padding-top: 10px;
 `;
 
 const P = styled.p`
   margin: 0;
   font-weight: 900;
+`;
+
+const CrownSVG = styled.img`
+  object-fit: contain;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+const FullLogoSVG = styled.img`
+  display: none;
+  padding-bottom: 6px;
+  @media (min-width: 768px) {
+    display: block;
+    object-fit: contain;
+    height: 100%;
+  }
 `;
 
 const Header = () => {
@@ -47,7 +72,8 @@ const Header = () => {
         </a>
       </StyledDiv>
       <StickyLogo>
-        <img src={logo} alt="crown" />
+        <CrownSVG src={logo} alt="crown" />
+        <FullLogoSVG src={redFullLogo} alt="king-logo" />
       </StickyLogo>
       <StyledDiv>
         <P>MON - SAT: 11AM - 10PM</P>

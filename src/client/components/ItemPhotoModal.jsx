@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Modal = styled.div.attrs({ className: 'MyPhotoModal' })`
-  display: none;
-  position: fixed;
-  z-index: 22;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-`;
+const Modal = styled.div(props => ({
+  display: props.display,
+  position: 'fixed',
+  'z-index': '22',
+  left: '0',
+  top: '0',
+  width: '100%',
+  height: '100%',
+  overflow: 'auto',
+  'background-color': 'rgba(0, 0, 0, 0.4)',
+}));
 
 const ModalContent = styled.div`
   background-color: #fefefe;
@@ -38,7 +37,7 @@ const CloseButton = styled.span`
 
 const ItemPhotoModal = ({ display, setDisplay }) => {
   return (
-    <Modal style={{ display }}>
+    <Modal display={display}>
       <ModalContent>
         <CloseButton onClick={() => setDisplay('none')}>&times;</CloseButton>
         <p> Image Coming Soon </p>
