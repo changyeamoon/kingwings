@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import logo from '../logo.svg';
 import googleMap from '../google-map.svg';
+import phoneCall from '../phone-call.svg';
 import redFullLogo from '../red-full-logo.svg';
 import device from '../device';
 
@@ -86,6 +87,11 @@ const GoogleMapSVG = styled.img`
   padding-top: 3px;
   width: 1.5em;
 `;
+const PhoneCallSVG = styled.img`
+  object-fit: contain;
+  padding-top: 3px;
+  width: 1.5em;
+`;
 
 const Header = () => {
   return (
@@ -110,7 +116,7 @@ const Header = () => {
         <P>MON - SAT: 11AM - 10PM</P>
         <P>SUNDAY : 12PM - 7PM</P>
         <A href="tel:7707741155" data-initialized="true">
-          + 770.774.1155
+          <PhoneCallSVG src={phoneCall} alt="phone-call-logo" /> <span>770.774.1155</span>
         </A>
       </StyledDiv>
     </StyledHeader>
