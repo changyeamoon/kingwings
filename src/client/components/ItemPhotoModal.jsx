@@ -19,6 +19,7 @@ const ModalContent = styled.div`
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  z-index: 25;
 `;
 
 const CloseButton = styled.span`
@@ -37,7 +38,14 @@ const CloseButton = styled.span`
 
 const ItemPhotoModal = ({ display, setDisplay }) => {
   return (
-    <Modal display={display}>
+    <Modal
+      display={display}
+      onClick={e => {
+        if (e.target.attributes.display && display === 'block') {
+          setDisplay('none');
+        }
+      }}
+    >
       <ModalContent>
         <CloseButton onClick={() => setDisplay('none')}>&times;</CloseButton>
         <p> Image Coming Soon </p>
