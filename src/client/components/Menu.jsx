@@ -9,7 +9,7 @@ const StyledMenu = styled.div`
   overflow-x: hidden;
 `;
 
-const Menu = ({ addToCart }) => {
+const Menu = ({ addToCart, hello }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -30,8 +30,12 @@ const Menu = ({ addToCart }) => {
       );
     });
   };
-
-  return <StyledMenu>{listItems()}</StyledMenu>;
+  return (
+    <StyledMenu>
+      {listItems()}
+      {hello}
+    </StyledMenu>
+  );
 };
 
 export default Menu;
