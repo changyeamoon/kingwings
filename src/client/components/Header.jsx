@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../logo.svg';
-import googleMap from '../google-map.svg';
-import phoneCall from '../phone-call.svg';
-import redFullLogo from '../red-full-logo.svg';
+import logo from '../svg/logo.svg';
+import googleMap from '../svg/google-map.svg';
+import phoneCall from '../svg/phone-call.svg';
+import redFullLogo from '../svg/red-full-logo.svg';
 import device from '../device';
 
 const StyledHeader = styled.div`
@@ -34,6 +34,7 @@ const StyledDiv = styled.div`
   justify-self: stretch;
   align-self: center;
   padding-top: 10px;
+  font-size: 2.5vw;
 
   @media ${device.tablet} {
     font-size: 2vw;
@@ -76,14 +77,12 @@ const A = styled.a`
 
 const CrownSVG = styled.img`
   object-fit: contain;
-  padding: 2px 0px;
   @media ${device.tablet} {
     display: none;
   }
 `;
 const FullLogoSVG = styled.img`
   display: none;
-  padding-bottom: 6px;
   @media ${device.tablet} {
     display: block;
     object-fit: contain;

@@ -8,7 +8,7 @@ const gql = {
         price
       } 
     }`;
-    return fetch('/api/graphql', {
+    return fetch('api/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
