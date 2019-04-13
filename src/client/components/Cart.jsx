@@ -7,6 +7,7 @@ const CartStore = styled.div`
   width: 100%;
   left: 50%;
   margin-left: -50%;
+  text-align: center;
 `;
 
 const CartButton = styled.button`
@@ -14,7 +15,9 @@ const CartButton = styled.button`
   -moz-appearance: none;
   border: 0 !important;
   padding: 0px;
+  background-color: blue;
   width: 100%;
+  height: 2em;
 
   &:focus {
     outline: 0;
