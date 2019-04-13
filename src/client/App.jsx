@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Admin from './components/Admin';
 import Pdf from './components/Pdf';
-// import { StateProvider, useReducer } from './state';
+import { ItemProvider } from './state';
 import gql from './gqlQueries';
 
 const Container = styled.div`
@@ -15,42 +15,39 @@ const Container = styled.div`
   font-size: 12px;
 `;
 
-const ItemContext = React.createContext([]);
-
-const ItemProvider = props => {
-  const [itemm, setItemm] = useState([]);
-  return <ItemContext.Provider value={itemm}>{props.children}</ItemContext.Provider>;
-};
-
 const App = () => {
-  const initialState = {
-    items: [{ name: 'chang' }],
-  };
+  // const ItemContext = useContext(ItemProvider);
+  // const initialState = {
+  //   items: [{ name: 'chang' }],
+  // };
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'getItems':
-        return {
-          ...state,
-          items: action.payload,
-        };
-      default:
-        return state;
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // const reducer = (state, action) => {
+  //   switch (action.type) {
+  //     case 'getItems':
+  //       return {
+  //         ...state,
+  //         items: action.payload,
+  //       };
+  //     default:
+  //       return state;
+  //   }
+  // };
+  // const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    // console.log('component did mount');
+    // gql.getItems().then(res => {
+    //   dispatch({
+    //     type: 'getItems',
+    //     payload: res.data.items,
+    //   });
+    // });
     console.log('component did mount');
+
     gql.getItems().then(res => {
-      dispatch({
-        type: 'getItems',
-        payload: res.data.items,
-      });
+      // useItem.setItem(res.data.items);
     });
   }, []);
-
-  const item = useContext(ItemContext);
 
   const [login, setLogin] = useState(false);
 
@@ -68,7 +65,6 @@ const App = () => {
       />
     );
   };
-  console.log(state.items);
   return (
     <ItemProvider>
       <Router>
@@ -87,7 +83,6 @@ const App = () => {
             <Route path="/pdf-menu" component={Pdf} />
             <AdminRoute path="/admin" component={Admin} />
           </Switch>
-          {state.items[0].name}
         </Container>
       </Router>
     </ItemProvider>

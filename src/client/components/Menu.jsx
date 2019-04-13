@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import gql from '../gqlQueries';
 import Item from './Item';
+import { useItem, ItemProvider } from '../state';
 
 const StyledMenu = styled.div`
   height: 80vh;
@@ -11,6 +12,8 @@ const StyledMenu = styled.div`
 `;
 
 const Menu = ({ addToCart }) => {
+  // const ItemContext = useContext(ItemProvider);
+
   const [items, setItems] = useState([]);
   // const [{ items }, dispatch] = useStateValue();
 
@@ -29,9 +32,12 @@ const Menu = ({ addToCart }) => {
   //     });
   //   });
   // }, []);
+  const s = useItem();
+
+  console.log(s);
 
   const listItems = () => {
-    return items.map((item, index) => {
+    return s.map((item, index) => {
       return (
         <Item
           key={`${item.__typename}:${item.id}`}
