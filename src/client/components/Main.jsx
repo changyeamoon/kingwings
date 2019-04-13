@@ -40,9 +40,7 @@ const Main = () => {
 
   return (
     <Home>
-      <Menu addToCart={addToCart}>
-        <p>Hello</p>
-      </Menu>
+      <Menu addToCart={addToCart} />
       <Cart cart={cart} deleteFromCart={deleteFromCart} />
     </Home>
   );

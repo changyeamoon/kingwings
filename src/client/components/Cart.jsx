@@ -4,16 +4,17 @@ import styled from 'styled-components';
 const CartStore = styled.div`
   position: absolute;
   bottom: 1%;
-  margin: 0;
+  width: 100%;
+  left: 50%;
+  margin-left: -50%;
 `;
 
 const CartButton = styled.button`
-  position: relative;
   -webkit-appearance: none;
   -moz-appearance: none;
   border: 0 !important;
-  width: 100vw;
-  padding: 0;
+  padding: 0px;
+  width: 100%;
 
   &:focus {
     outline: 0;
