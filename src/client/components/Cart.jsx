@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+const CartStore = styled.div`
+  position: absolute;
+  bottom: 1%;
+  margin: 0;
+`;
+
+const CartButton = styled.button`
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0 !important;
+  width: 100vw;
+  padding: 0;
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
 const CartContent = styled.div`
   display: none;
   position: absolute;
@@ -15,11 +34,6 @@ const CartContent = styled.div`
   z-index: 3
 `;
 
-const CartStore = styled.div`
-  position: absolute;
-  bottom: 1%;
-  right: 2em;
-`;
 const ItemDetails = styled.div`
   display: grid;
   padding: 3px 0px;
@@ -42,19 +56,6 @@ const DeleteButton = styled.span`
   -webkit-appearance: none;
   -moz-appearance: none;
   border: 0 !important;
-
-  &:focus {
-    outline: 0;
-  }
-`;
-
-const CartButton = styled.button`
-  position: relative;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: 0 !important;
-  width: 80vw;
-  padding: 0;
 
   &:focus {
     outline: 0;

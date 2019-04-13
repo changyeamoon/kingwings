@@ -15,21 +15,25 @@ const DropContent = styled.div`
   right: 0%;
   height: auto;
   width: 25px;
-  bottom: 23vh;
+  bottom: 10%;
   grid-gap: 10px 0px;
   grid-auto-rows: 2em;
   justify-items: center;
   align-items: center;
 
   @media (max-width: 320px) {
-    bottom: 13vh;
+    bottom: 10%;
   }
   @media ${device.tablet} {
     display: grid !important;
     grid-gap: 20px 0px;
     grid-auto-rows: 5em;
-    bottom: 20vh;
+    bottom: 10%;
     right: 4%;
+  }
+
+  @media ${device.laptop} {
+    bottom: 10%;
   }
 `;
 

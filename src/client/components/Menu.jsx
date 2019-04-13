@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import { Signer } from 'crypto';
 import gql from '../gqlQueries';
 import Item from './Item';
-import { useItem, ItemProvider } from '../state';
+import { useItem } from '../state';
 
 const StyledMenu = styled.div`
   height: 80vh;
@@ -12,16 +13,6 @@ const StyledMenu = styled.div`
 `;
 
 const Menu = ({ addToCart }) => {
-  // const ItemContext = useContext(ItemProvider);
-
-  const [items, setItems] = useState([]);
-  // const [{ items }, dispatch] = useStateValue();
-
-  // useEffect(() => {
-  //   console.log(items);
-
-  // }, [items]);
-
   // useEffect(() => {
   //   console.log('component did mount');
   //   gql.getItems().then(res => {
@@ -34,10 +25,8 @@ const Menu = ({ addToCart }) => {
   // }, []);
   const s = useItem();
 
-  console.log(s);
-
   const listItems = () => {
-    return s.map((item, index) => {
+    return s.item.map((item, index) => {
       return (
         <Item
           key={`${item.__typename}:${item.id}`}

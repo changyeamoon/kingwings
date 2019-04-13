@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Admin from './components/Admin';
 import Pdf from './components/Pdf';
-import { ItemProvider } from './state';
+import { useItem } from './state';
 import gql from './gqlQueries';
 
 const Container = styled.div`
@@ -16,7 +16,6 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  // const ItemContext = useContext(ItemProvider);
   // const initialState = {
   //   items: [{ name: 'chang' }],
   // };
@@ -34,23 +33,9 @@ const App = () => {
   // };
   // const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    // console.log('component did mount');
-    // gql.getItems().then(res => {
-    //   dispatch({
-    //     type: 'getItems',
-    //     payload: res.data.items,
-    //   });
-    // });
-    console.log('component did mount');
-
-    gql.getItems().then(res => {
-      // useItem.setItem(res.data.items);
-    });
-  }, []);
-
   const [login, setLogin] = useState(false);
 
+  const s = useItem();
   const AdminRoute = ({ component: Component, ...rest }) => {
     return (
       <Route
@@ -65,27 +50,38 @@ const App = () => {
       />
     );
   };
+
+  useEffect(() => {
+    // console.log('component did mount');
+    // gql.getItems().then(res => {
+    //   dispatch({
+    //     type: 'getItems',
+    //     payload: res.data.items,
+    //   });
+    // });
+    console.log('component did mount');
+
+    gql.getItems().then(res => {
+      s.setItem(res.data.items);
+    });
+  }, []);
   return (
-    <ItemProvider>
-      <Router>
-        <Container>
-          <Header />
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route
-              exact
-              path="/login"
-              render={props => (
-                <Login login={login} setLogin={setLogin} location={props.location} />
-              )}
-            />
-            <Route path="/pdf-menu" component={Pdf} />
-            <AdminRoute path="/admin" component={Admin} />
-          </Switch>
-        </Container>
-      </Router>
-    </ItemProvider>
+    <Router>
+      <Container>
+        <Header />
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route
+            exact
+            path="/login"
+            render={props => <Login login={login} setLogin={setLogin} location={props.location} />}
+          />
+          <Route path="/pdf-menu" component={Pdf} />
+          <AdminRoute path="/admin" component={Admin} />
+        </Switch>
+      </Container>
+    </Router>
   );
 };
 
