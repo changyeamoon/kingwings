@@ -7,20 +7,23 @@ module.exports = {
   mode: 'development',
   entry: './src/client/index.js',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
   devServer: {
-    contentBase: './dist',
+    port: 8080,
+
+    contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
     open: true,
     publicPath: '/',
     historyApiFallback: true,
     proxy: {
-      '/api': {
+      '/api/**': {
         target: 'http://localhost:3000',
-        pathRewrite: { '^/api': '' },
+        secure: false,
+        changeOrigin: true,
       },
     },
   },

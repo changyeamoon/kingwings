@@ -1,0 +1,8 @@
+FROM node:10.1
+RUN npm install webpack --g
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app
+COPY package-lock.json /usr/src/app
+RUN npm run build
+RUN npm install
+EXPOSE 3000
