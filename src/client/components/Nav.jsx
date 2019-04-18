@@ -10,30 +10,21 @@ import phone from '../svg/smart-phone.svg';
 import circle from '../svg/circle.svg';
 
 const DropContent = styled.div`
-  display: none;
+  display: grid !important;
+  grid-gap: 1em 0em;
+  grid-auto-rows: 3em;
   position: absolute;
-  right: 0%;
+  right: 1%;
   height: auto;
   width: 25px;
-  bottom: 10%;
-  grid-gap: 10px 0px;
-  grid-auto-rows: 2em;
+  bottom: 20%;
   justify-items: center;
   align-items: center;
 
-  @media (max-width: 320px) {
-    bottom: 10%;
-  }
   @media ${device.tablet} {
-    display: grid !important;
-    grid-gap: 20px 0px;
-    grid-auto-rows: 5em;
-    bottom: 10%;
-    right: 4%;
-  }
-
-  @media ${device.laptop} {
-    bottom: 10%;
+    grid-gap: 3em 0em;
+    bottom: 15%;
+    right: 3.5%;
   }
 `;
 
@@ -66,7 +57,7 @@ const DropButton = styled.button`
 const StyledLink = styled(Link)`
   color: black;
   font-weight: bold;
-  width: 1em;
+  width: 2em;
 
   @media ${device.tablet} {
     width: 4em;
@@ -76,7 +67,7 @@ const StyledLink = styled(Link)`
 const A = styled.a`
   color: black;
   font-weight: bold;
-  width: 1em;
+  width: 2em;
 
   @media ${device.tablet} {
     width: 4em;
@@ -92,7 +83,7 @@ const Nav = () => {
   const [display, setDisplay] = useState('none');
   return (
     <>
-      <DropButton
+      {/* <DropButton
         onClick={() => {
           if (icon === '+') {
             setDisplay('grid');
@@ -104,7 +95,7 @@ const Nav = () => {
         }}
       >
         <LinkSVG src={circle} alt="nav-button" />
-      </DropButton>
+      </DropButton> */}
       <DropContent style={{ display }}>
         <StyledLink to="/">
           <LinkSVG src={store} alt="home" />

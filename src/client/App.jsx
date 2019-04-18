@@ -16,26 +16,8 @@ const Container = styled.div`
 `;
 
 const App = () => {
-  // const initialState = {
-  //   items: [{ name: 'chang' }],
-  // };
-
-  // const reducer = (state, action) => {
-  //   switch (action.type) {
-  //     case 'getItems':
-  //       return {
-  //         ...state,
-  //         items: action.payload,
-  //       };
-  //     default:
-  //       return state;
-  //   }
-  // };
-  // const [state, dispatch] = useReducer(reducer, initialState);
-
   const [login, setLogin] = useState(false);
 
-  const s = useItem();
   const AdminRoute = ({ component: Component, ...rest }) => {
     return (
       <Route
@@ -51,20 +33,14 @@ const App = () => {
     );
   };
 
-  useEffect(() => {
-    // console.log('component did mount');
-    // gql.getItems().then(res => {
-    //   dispatch({
-    //     type: 'getItems',
-    //     payload: res.data.items,
-    //   });
-    // });
-    console.log('component did mount');
+  const store = useItem();
 
+  useEffect(() => {
     gql.getItems().then(res => {
-      s.setItem(res.data.items);
+      store.setItem(res.data.items);
     });
   }, []);
+
   return (
     <Router>
       <Container>

@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import CustomizeModal from './CustomizeModal';
 import ItemPhotoModal from './ItemPhotoModal';
+import device from '../device';
 
 const ItemDetail = styled.div`
   display: grid;
   padding: 5px 0px;
-  grid-template-columns: 60% 10% 12% 12%;
+  grid-template-columns: 48% 15% 15% 15%;
   align-items: center;
   grid-gap: 5px;
-  grid-auto-rows: 10em;
+  grid-auto-rows: 6em;
 
   &:hover {
     background: #eee;
@@ -20,19 +21,22 @@ const ItemName = styled.span`
   align-self: center;
 `;
 const ItemPrice = styled.span`
-  place-self: center;
-  text-align: center
   background-color: #ffce00;
-  border-radius: 20px;
-  height: 2em;
-  width: 2em;
-  padding: 5px;
-  margin: 5px;
-  font-size: 1em;
+  border-radius: 2em;
+  padding: 8px;
+  margin: 0px;
+  font-size: 0.8em;
   vertical-align: baseline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media ${device.tablet} {
+    margin: 5px 10px;
+    font-size: 1em;
+  }
 `;
 
-const StyledButton = styled.span`
+const StyledButton = styled.button`
   -webkit-appearance: none;
   -moz-appearance: none;
   border: 0 !important;
@@ -40,12 +44,17 @@ const StyledButton = styled.span`
   color: #f4ebd9;
   background-color: #40a459;
   letter-spacing: 2px;
-  padding: 10px;
-  margin: 5px;
+  padding: 8px 0px;
+  margin: 0px;
   border-radius: 10px;
   box-shadow: 0px 6px 5px #888888;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  @media ${device.tablet} {
+    padding: 10px 0px;
+    margin: 5px;
+  }
 
   &:hover {
     background-color: #3d9ae3;
@@ -67,7 +76,7 @@ const Item = ({ addToCart, id, name, price, photo }) => {
     <>
       <ItemDetail>
         <ItemName onClick={() => setPhotoDisplay('block')}>{name} </ItemName>
-        <ItemPrice>${price} </ItemPrice>
+        <ItemPrice>${price}</ItemPrice>
         <StyledButton type="button" onClick={() => setCustomizeDisplay('block')}>
           edit
         </StyledButton>

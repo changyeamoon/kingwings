@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import device from '../device';
 
 const CartStore = styled.div`
   position: absolute;
@@ -21,6 +22,10 @@ const CartButton = styled.button`
 
   &:focus {
     outline: 0;
+  }
+
+  @media ${device.tablet} {
+    height: 4em;
   }
 `;
 
