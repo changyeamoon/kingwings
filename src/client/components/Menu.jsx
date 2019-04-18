@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import Item from './Item';
 import { useItem } from '../state';
+import device from '../device';
 
 const StyledMenu = styled.div`
   height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 5px 0;
+
+  @media ${device.laptopL} {
+    height: 70vh;
+  }
 `;
 
 const Menu = ({ addToCart }) => {

@@ -16,8 +16,12 @@ const CartButton = styled.button`
   -moz-appearance: none;
   border: 0 !important;
   padding: 0px;
-  background-color: blue;
+  background-color: #f9f9f9;
   width: 100%;
+
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8em;
+  letter-spacing: 2px;
   height: 2em;
 
   &:focus {
@@ -25,7 +29,8 @@ const CartButton = styled.button`
   }
 
   @media ${device.tablet} {
-    height: 4em;
+    height: 3em;
+    font-size: 1.5em;
   }
 `;
 
@@ -35,20 +40,24 @@ const CartContent = styled.div`
   background-color: #f9f9f9;
   height: 70vh;
   width: 60vw
-  bottom: 30px;
-  right: 0.5em;
+  bottom: 3em;
+  right: 1em;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
   overflow: scroll;
   z-index: 3
+
+  @media ${device.tablet} {
+    bottom: 6em;
+  }
 `;
 
 const ItemDetails = styled.div`
   display: grid;
   padding: 3px 0px;
   grid-template-columns: 60% 10% 12% 12%;
-  align-self: center;
-  justify-self: center;
+  align-items: center;
+  justify-items: center;
   grid-gap: 5px;
 
   &:hover {

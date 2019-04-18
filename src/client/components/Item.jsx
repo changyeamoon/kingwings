@@ -11,14 +11,23 @@ const ItemDetail = styled.div`
   align-items: center;
   grid-gap: 5px;
   grid-auto-rows: 6em;
+  border-top: 1px solid #dfdfdf;
 
   &:hover {
     background: #eee;
   }
 `;
 const ItemName = styled.span`
-  justify-self: left;
+  justify-self: center;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+
   align-self: center;
+
+  @media ${device.tablet} {
+    margin-left: 2em;
+    font-size: 2em;
+  }
 `;
 const ItemPrice = styled.span`
   background-color: #ffce00;
@@ -32,6 +41,11 @@ const ItemPrice = styled.span`
 
   @media ${device.tablet} {
     margin: 5px 10px;
+    font-size: 1em;
+  }
+
+  @media ${device.laptop} {
+    margin: 5px 25px;
     font-size: 1em;
   }
 `;
@@ -57,7 +71,7 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background-color: #3d9ae3;
+    background-color: #3cb359;
   }
   &:active {
     box-shadow: 0px 2px 5px #666666;
