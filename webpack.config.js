@@ -12,13 +12,15 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    port: 8080,
-
+    port: 8081,
+    host: '0.0.0.0',
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
     open: true,
     publicPath: '/',
     historyApiFallback: true,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+
     proxy: {
       '/api/**': {
         target: 'http://localhost:3000',

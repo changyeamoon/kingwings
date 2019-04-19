@@ -1,11 +1,12 @@
 ---
-version: '0'
+version: '3'
 services:
   dev:
+    build: .
     image: mhygroupinc/kings-dependencies
     container_name: kings-dev-hot
     ports:
-      - '8080:8080'
+      - '8081:8081'
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules

@@ -16,6 +16,7 @@
     "start": "nodemon src/server/index.js",
     "dev": "webpack-dev-server",
     "build": "webpack",
+    "docker-dev:hot": "docker-compose -f docker-compose-dev-hot.yml up",
     "test": "jest --watchAll --coverage"
   },
   "repository": {
