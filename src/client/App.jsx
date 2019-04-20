@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
-import Main from './components/Main';
-import Login from './components/Login';
 import Header from './components/Header';
-import Admin from './components/Admin';
-import Pdf from './components/Pdf';
+const Main = lazy(() => import('./components/Main'));
+const Login = lazy(() => import('./components/Login'));
+const Admin = lazy(() => import('./components/Admin'));
+const Pdf = lazy(() => import('./components/Pdf'));
+// import Main from './components/Main';
+// import Login from './components/Login';
+// import Admin from './components/Admin';
+// import Pdf from './components/Pdf';
 import { useItem } from './state';
 import gql from './gqlQueries';
 
@@ -46,16 +50,20 @@ const App = () => {
       <Container>
         <Header />
         <Nav />
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route
-            exact
-            path="/login"
-            render={props => <Login login={login} setLogin={setLogin} location={props.location} />}
-          />
-          <Route path="/pdf-menu" component={Pdf} />
-          <AdminRoute path="/admin" component={Admin} />
-        </Switch>
+        <Suspense fallback={<div>loading...</div>}>
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route
+              exact
+              path="/login"
+              render={props => (
+                <Login login={login} setLogin={setLogin} location={props.location} />
+              )}
+            />
+            <Route path="/pdf-menu" component={Pdf} />
+            <AdminRoute path="/admin" component={Admin} />
+          </Switch>
+        </Suspense>
       </Container>
     </Router>
   );

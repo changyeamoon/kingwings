@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
 import Cart from './Cart';
@@ -46,4 +46,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default memo(Main);
