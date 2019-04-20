@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import styled from 'styled-components';
 import Nav from './components/Nav';
 import Header from './components/Header';
+import ErrorBoundary from './components/ErrorBoundary';
 const Main = lazy(() => import('./components/Main'));
 const Login = lazy(() => import('./components/Login'));
 const Admin = lazy(() => import('./components/Admin'));
@@ -50,20 +51,22 @@ const App = () => {
       <Container>
         <Header />
         <Nav />
-        <Suspense fallback={<div>loading...</div>}>
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route
-              exact
-              path="/login"
-              render={props => (
-                <Login login={login} setLogin={setLogin} location={props.location} />
-              )}
-            />
-            <Route path="/pdf-menu" component={Pdf} />
-            <AdminRoute path="/admin" component={Admin} />
-          </Switch>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<div>loading...</div>}>
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route
+                exact
+                path="/login"
+                render={props => (
+                  <Login login={login} setLogin={setLogin} location={props.location} />
+                )}
+              />
+              <Route path="/pdf-menu" component={Pdf} />
+              <AdminRoute path="/admin" component={Admin} />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
       </Container>
     </Router>
   );
