@@ -4,7 +4,7 @@ import device from '../device';
 
 const CartStore = styled.div`
   position: absolute;
-  bottom: 1%;
+  bottom: 2%;
   width: 100%;
   left: 50%;
   margin-left: -50%;

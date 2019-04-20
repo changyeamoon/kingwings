@@ -16,6 +16,9 @@ const ItemDetail = styled.div`
   &:hover {
     background: #eee;
   }
+  &:active {
+    background: #fffff1;
+  }
 `;
 const ItemName = styled.span`
   justify-self: center;
@@ -38,6 +41,8 @@ const ItemPrice = styled.span`
   vertical-align: baseline;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-style: italic;
+  box-shadow: 0px 1px 3px #888888;
 
   @media ${device.tablet} {
     margin: 5px 10px;
@@ -57,11 +62,11 @@ const StyledButton = styled.button`
 
   color: #f4ebd9;
   background-color: #40a459;
-  letter-spacing: 2px;
-  padding: 8px 0px;
-  margin: 0px;
+  letter-spacing: 1.5px;
+  padding: 5px 0px;
+  margin: 0px 0px 0px 3px;
   border-radius: 10px;
-  box-shadow: 0px 6px 5px #888888;
+  box-shadow: 0px 4px 5px #888888;
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -75,7 +80,7 @@ const StyledButton = styled.button`
   }
   &:active {
     box-shadow: 0px 2px 5px #666666;
-    transform: translateY(4px);
+    transform: translateY(3px);
   }
   &:focus {
     outline: 0;

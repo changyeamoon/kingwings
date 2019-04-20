@@ -8,17 +8,17 @@ import device from '../device';
 
 const StyledHeader = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1.3fr;
   font-family: 'Alegreya Sans SC', sans-serif;
   background: #d74841;
 
-  @media ${device.tablet} {
-    background: #d74841;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 
 const StickyLogo = styled.div`
-  width: 70%;
+  width: 100%;
   height: auto;
   align-self: center;
   justify-self: center;
@@ -31,10 +31,11 @@ const StickyLogo = styled.div`
 
 const StyledDiv = styled.div`
   width: auto;
-  justify-self: stretch;
+  justify-self: center;
   align-self: center;
   padding-top: 10px;
-  font-size: 2.5vw;
+  font-size: 3vw;
+  font-weight: 1000;
 
   @media ${device.tablet} {
     font-size: 2vw;
@@ -45,7 +46,7 @@ const P = styled.p`
   margin: 0;
   letter-spacing: 0.08em;
   font-family: 'Quicksand', sans-serif;
-  font-weight: 700;
+  text-align: justify;
 `;
 
 const A = styled.a`
@@ -137,9 +138,9 @@ const Header = () => {
       </StickyLogo>
       <StyledDiv>
         <P>
-          MON - SAT: 11AM - 10PM
+          Mon - Sat : 11 - 10
           <br />
-          SUNDAY : 12PM - 7PM
+          Sunday : 12 - 7
         </P>
         <A href="tel:7707741155" data-initialized="true">
           <PhoneCallSVG src={phoneCall} alt="phone-call-logo" />
