@@ -140,7 +140,9 @@ const Header = () => {
         <P>
           Mon - Sat : 11 - 10
           <br />
-          Sunday : 12 - 7
+          <span style={{ padding: '0em 0.4em ' }} />
+          Sunday
+          <span style={{ padding: '0em 0.4em ' }} />: 12 - 7
         </P>
         <A href="tel:7707741155" data-initialized="true">
           <PhoneCallSVG src={phoneCall} alt="phone-call-logo" />

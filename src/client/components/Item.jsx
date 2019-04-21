@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import styled from 'styled-components';
 import CustomizeModal from './CustomizeModal';
 import ItemPhotoModal from './ItemPhotoModal';
@@ -109,4 +109,4 @@ const Item = ({ addToCart, id, name, price, photo }) => {
   );
 };
 
-export default Item;
+export default memo(Item);

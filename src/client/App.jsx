@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
+import React, { Suspense, lazy, useState, useEffect, memo } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
@@ -72,4 +72,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default memo(App);

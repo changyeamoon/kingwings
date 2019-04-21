@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import Item from './Item';
 import { useItem } from '../state';
@@ -33,4 +33,4 @@ const Menu = ({ addToCart }) => {
   return <StyledMenu>{listItems()}</StyledMenu>;
 };
 
-export default Menu;
+export default memo(Menu);

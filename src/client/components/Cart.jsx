@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 import device from '../device';
 
@@ -158,4 +158,4 @@ const Cart = ({ cart, deleteFromCart }) => {
   );
 };
 
-export default Cart;
+export default memo(Cart);

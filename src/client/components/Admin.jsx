@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Admin = props => (
   <div>
@@ -43,7 +43,7 @@ class AdminClass extends React.PureComponent {
 
   render() {
     return (
-      <>
+      <div>
         <div>
           <span>wow you reach a very private page. </span>
           <button type="button" onClick={() => this.props.setLogin(false)}>
@@ -57,14 +57,25 @@ class AdminClass extends React.PureComponent {
             value={this.state.search}
             onChange={e => this.setState({ search: e.target.value })}
           />
+          <button
+            type="button"
+            onClick={() => this.setState({ stuff: [...this.state.stuff, { name: 'bob' }] })}
+          >
+            add something
+          </button>
           <ul>
             {this.filterWithSearch().map((thing, i) => (
-              <li key={`${i}${thing.name}`}>- {thing.name}</li>
+              <Names key={`${i}${thing.name}`} name={thing.name} />
             ))}
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 }
+
+const Names = memo(function component(props) {
+  return <li>- {props.name} </li>;
+});
+
 export default AdminClass;
