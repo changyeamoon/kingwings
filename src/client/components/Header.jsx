@@ -65,14 +65,14 @@ const A = styled.a`
     text-decoration: none;
     color: #fac52b;
   }
-  &:focus {
+  &:hover {
     text-decoration: none;
-    color: black;
+    font-size: 2.1vw;
+    color: #fff701;
   }
-  &:hover,
   &:active {
+    font-size: 2vw;
     text-decoration: none;
-    color: black;
   }
 `;
 
