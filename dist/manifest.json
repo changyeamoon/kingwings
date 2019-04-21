@@ -3,8 +3,8 @@
   "name": "Kings Fish and Wings",
   "icons": [
     {
-      "src": "/dd0fad71d5c2eb08c7180ddf6bfe6aba.svg",
-      "sizes": "512x512 192x192 64x64 32x32 24x24 16x16"
+      "src": "./dd0fad71d5c2eb08c7180ddf6bfe6aba.svg",
+      "sizes": "any"
     }
   ],
   "start_url": ".",

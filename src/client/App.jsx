@@ -63,7 +63,7 @@ const App = () => {
                 )}
               />
               <Route path="/pdf-menu" component={Pdf} />
-              <AdminRoute path="/admin" component={Admin} />
+              <AdminRoute path="/admin" component={() => <Admin setLogin={setLogin} />} />
             </Switch>
           </Suspense>
         </ErrorBoundary>
