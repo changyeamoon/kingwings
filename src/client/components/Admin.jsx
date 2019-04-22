@@ -20,7 +20,6 @@ class AdminClass extends React.PureComponent {
         { name: 'jeff' },
         { name: 'alaina' },
         { name: 'jordan' },
-        { name: 'donte' },
         { name: 'tristan' },
         { name: 'carolyn' },
         { name: 'harmon' },
@@ -30,15 +29,28 @@ class AdminClass extends React.PureComponent {
         { name: 'robert' },
         { name: 'melody' },
         { name: 'howard' },
+        { name: 'emilia' },
+        { name: 'johnathon' },
+        { name: 'joel' },
+        { name: 'kenny' },
+        { name: 'braden' },
+        { name: 'adrian' },
       ],
     };
     this.filterWithSearch = this.filterWithSearch.bind(this);
+    this.listNames = this.listNames.bind(this);
   }
 
   filterWithSearch() {
     return this.state.stuff.filter(thing => {
       return thing.name.match(new RegExp(this.state.search, 'g'));
     });
+  }
+
+  listNames() {
+    return this.filterWithSearch().map((thing, i) => (
+      <Names key={`${i}${thing.name}`} name={thing.name} />
+    ));
   }
 
   render() {
@@ -63,19 +75,17 @@ class AdminClass extends React.PureComponent {
           >
             add something
           </button>
-          <ul>
-            {this.filterWithSearch().map((thing, i) => (
-              <Names key={`${i}${thing.name}`} name={thing.name} />
-            ))}
-          </ul>
+          <ul>{this.listNames()}</ul>
         </div>
       </div>
     );
   }
 }
 
-const Names = memo(function component(props) {
-  return <li>- {props.name} </li>;
-});
+class Names extends React.PureComponent {
+  render() {
+    return <li>- {this.props.name} </li>;
+  }
+}
 
 export default AdminClass;

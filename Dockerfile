@@ -1,4 +1,4 @@
-FROM node:10.1
+FROM node:8.12
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install

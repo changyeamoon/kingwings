@@ -76,7 +76,7 @@ class LoginClass extends React.PureComponent {
             />
           </div>
           <div>
-            <button type="button" onClick={this.handleLogin}>
+            <button type="button" onClick={() => setTimeout(this.handleLogin, 1000)}>
               log in
             </button>
             {this.state.attempted ? (
