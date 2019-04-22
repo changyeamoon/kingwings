@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import actions from '../actions/actions';
 
 const Admin = props => (
   <div>
@@ -8,6 +10,15 @@ const Admin = props => (
     </button>
   </div>
 );
+const mapStateToProps = store => ({
+  items: store.menu.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteItem: itemId => {
+    dispatch(actions.deleteItem(itemId));
+  },
+});
 
 class AdminClass extends React.PureComponent {
   constructor(props) {
@@ -75,6 +86,9 @@ class AdminClass extends React.PureComponent {
           >
             add something
           </button>
+          <button type="button" onClick={() => this.props.deleteItem(0)}>
+            delete something
+          </button>
           <ul>{this.listNames()}</ul>
         </div>
       </div>
@@ -88,4 +102,7 @@ class Names extends React.PureComponent {
   }
 }
 
-export default AdminClass;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AdminClass);
