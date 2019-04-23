@@ -24,7 +24,7 @@ class ErrorBoundary extends Component {
       // You can render any custom fallback UI
       return (
         <div>
-          <h2>Something went wrong.</h2>
+          <h2>Something went wrong...</h2>
           <details style={{ whiteSpace: 'pre-wrap', border: '0 !important' }}>
             {this.state.error && this.state.error.toString()}
             <br />
