@@ -15,7 +15,7 @@ module.exports = {
     host: '0.0.0.0',
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
-    // open: true,
+    open: true,
     publicPath: '/',
     historyApiFallback: true,
     inline: true,
