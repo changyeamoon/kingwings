@@ -59,6 +59,7 @@ class AdminClass extends React.PureComponent {
   }
 
   listNames() {
+    setTimeout(() => console.log('hello'), 3000);
     return this.filterWithSearch().map((thing, i) => (
       <Names key={`${i}${thing.name}`} name={thing.name} />
     ));
@@ -78,7 +79,11 @@ class AdminClass extends React.PureComponent {
             type="text"
             placeholder="search"
             value={this.state.search}
-            onChange={e => this.setState({ search: e.target.value })}
+            onChange={e => {
+              if (e.target.value.length < 4) {
+                this.setState({ search: e.target.value });
+              }
+            }}
           />
           <button
             type="button"
