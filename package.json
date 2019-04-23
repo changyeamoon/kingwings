@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "nodemon ./src/server/index.js",
-    "dev": "webpack-dev-server",
+    "dev": "NODE_ENV=development nodemon ./src/server/index.js & webpack-dev-server",
     "build": "webpack --config ./webpack.config.js",
     "docker-dev:hot": "docker-compose -f docker-compose-dev-hot.yml up",
     "test": "NODE_ENV=test jest --watchAll --coverage"
