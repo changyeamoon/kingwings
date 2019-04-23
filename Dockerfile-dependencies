@@ -6,4 +6,3 @@ COPY package-lock.json /usr/src/app
 RUN npm run build
 RUN npm install
 EXPOSE 3000
-as

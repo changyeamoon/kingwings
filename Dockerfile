@@ -5,4 +5,3 @@ RUN npm install
 RUN npm run build
 EXPOSE 3000
 ENTRYPOINT [ "node", "./src/server/index.js" ]
-as
