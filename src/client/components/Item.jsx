@@ -37,6 +37,7 @@ const ItemPrice = styled.span`
   border-radius: 2em;
   padding: 8px;
   margin: 0px;
+  letter-spacing: 0em;
   font-size: 0.8em;
   vertical-align: baseline;
   overflow: hidden;
@@ -44,9 +45,13 @@ const ItemPrice = styled.span`
   font-style: italic;
   box-shadow: 0px 1px 3px #888888;
 
+  @media ${device.mobileM} {
+    letter-spacing: 0.1em;
+  }
   @media ${device.tablet} {
     margin: 5px 10px;
     font-size: 1em;
+    letter-spacing: 0.2em;
   }
 
   @media ${device.laptop} {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import logo from '../svg/logo.svg';
 import googleMap from '../svg/google-map.svg';
@@ -118,8 +118,10 @@ const Header = () => {
             document.execCommand('copy');
           }}
         >
+          <span style={{ padding: '0em 0.2em ' }} />
           33862 Flat Shoals Rd,
           <br />
+          <span style={{ padding: '0em 0.15em ' }} />
           Union City, GA 300291
         </P>
         <A

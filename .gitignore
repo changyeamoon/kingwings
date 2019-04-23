@@ -3,3 +3,5 @@ node_modules
 legacy
 
 .env
+
+coverage

@@ -1,4 +1,6 @@
 import React, { memo } from 'react';
+import { connect } from 'react-redux';
+import actions from '../actions/actions';
 
 const Admin = props => (
   <div>
@@ -8,6 +10,15 @@ const Admin = props => (
     </button>
   </div>
 );
+const mapStateToProps = store => ({
+  items: store.menu.items,
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteItem: itemId => {
+    dispatch(actions.deleteItem(itemId));
+  },
+});
 
 class AdminClass extends React.PureComponent {
   constructor(props) {
@@ -20,7 +31,6 @@ class AdminClass extends React.PureComponent {
         { name: 'jeff' },
         { name: 'alaina' },
         { name: 'jordan' },
-        { name: 'donte' },
         { name: 'tristan' },
         { name: 'carolyn' },
         { name: 'harmon' },
@@ -30,15 +40,29 @@ class AdminClass extends React.PureComponent {
         { name: 'robert' },
         { name: 'melody' },
         { name: 'howard' },
+        { name: 'emilia' },
+        { name: 'johnathon' },
+        { name: 'joel' },
+        { name: 'kenny' },
+        { name: 'braden' },
+        { name: 'adrian' },
       ],
     };
     this.filterWithSearch = this.filterWithSearch.bind(this);
+    this.listNames = this.listNames.bind(this);
   }
 
   filterWithSearch() {
     return this.state.stuff.filter(thing => {
       return thing.name.match(new RegExp(this.state.search, 'g'));
     });
+  }
+
+  listNames() {
+    setTimeout(() => console.log('hello'), 3000);
+    return this.filterWithSearch().map((thing, i) => (
+      <Names key={`${i}${thing.name}`} name={thing.name} />
+    ));
   }
 
   render() {
@@ -55,7 +79,11 @@ class AdminClass extends React.PureComponent {
             type="text"
             placeholder="search"
             value={this.state.search}
-            onChange={e => this.setState({ search: e.target.value })}
+            onChange={e => {
+              if (e.target.value.length < 4) {
+                this.setState({ search: e.target.value });
+              }
+            }}
           />
           <button
             type="button"
@@ -63,19 +91,23 @@ class AdminClass extends React.PureComponent {
           >
             add something
           </button>
-          <ul>
-            {this.filterWithSearch().map((thing, i) => (
-              <Names key={`${i}${thing.name}`} name={thing.name} />
-            ))}
-          </ul>
+          <button type="button" onClick={() => this.props.deleteItem(0)}>
+            delete something
+          </button>
+          <ul>{this.listNames()}</ul>
         </div>
       </div>
     );
   }
 }
 
-const Names = memo(function component(props) {
-  return <li>- {props.name} </li>;
-});
+class Names extends React.PureComponent {
+  render() {
+    return <li>- {this.props.name} </li>;
+  }
+}
 
-export default AdminClass;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AdminClass);

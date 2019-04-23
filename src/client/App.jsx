@@ -14,6 +14,8 @@ const Pdf = lazy(() => import('./components/Pdf'));
 // import Pdf from './components/Pdf';
 import { useItem } from './state';
 import gql from './gqlQueries';
+import { Provider } from 'react-redux';
+import reduxStore from './store';
 
 const Container = styled.div`
   text-align: center;
@@ -63,7 +65,14 @@ const App = () => {
                 )}
               />
               <Route path="/pdf-menu" component={Pdf} />
-              <AdminRoute path="/admin" component={() => <Admin setLogin={setLogin} />} />
+              <AdminRoute
+                path="/admin"
+                component={() => (
+                  <Provider store={reduxStore}>
+                    <Admin setLogin={setLogin} />
+                  </Provider>
+                )}
+              />
             </Switch>
           </Suspense>
         </ErrorBoundary>
